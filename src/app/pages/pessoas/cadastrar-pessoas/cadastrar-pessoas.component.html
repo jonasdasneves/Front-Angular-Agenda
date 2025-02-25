@@ -1,0 +1,42 @@
+<form [formGroup]="formGroupPessoas" (submit)="cadastrarPessoa()" class="row g-3">
+  <div class="col-12">
+    <label for="nome" class="form-label">Nome</label>
+    <input type="text" class="form-control" id="nome" formControlName="nome">
+  </div>
+  <div class="col-3">
+    <label for="cep" class="form-label">CEP</label>
+    <input type="text" class="form-control" id="cep" placeholder="00000-123" formControlName="cep">
+  </div>
+  <div class="col-8">
+    <label for="rua" class="form-label">Rua</label>
+    <input type="text" class="form-control" id="rua" placeholder="Rua palmeiras" formControlName="rua">
+  </div>
+  <div class="col-1">
+    <label for="numero" class="form-label">Número</label>
+    <input type="number" class="form-control" id="numero" formControlName="numero">
+  </div>
+  <div class="col-3">
+    <label for="bairro" class="form-label">Bairro</label>
+    <input type="text" class="form-control" id="bairro" formControlName="bairro">
+  </div>
+  <div class="col-md-4">
+    <label for="cidade" class="form-label">Cidade</label>
+    <input type="text" class="form-control" id="cidade" formControlName="cidade">
+  </div>
+  <div class="col-md-2">
+    <label for="UF" class="form-label" >Estado</label>
+    <select id="uf" class="form-select" formControlName="uf">
+      <option selected>Escolha...</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <label for="celular" class="form-label">Celular</label>
+    <input type="text" class="form-control" id="celular" formControlName="celular">
+  </div>
+  <div class="col-1">
+    <button type="submit" class="btn btn-primary btn-lg">Finalizar</button>
+  </div>
+  <div class="col-1">
+    <button class="btn btn-secondary btn-lg" routerLink='/pessoas'>Cancelar</button>
+  </div>
+</form>
