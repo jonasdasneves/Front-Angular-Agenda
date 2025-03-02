@@ -1,6 +1,6 @@
 import {IPessoa} from "./pessoa"
 export interface IContato {
-  id: string;
+  id?: number;
   contato: string;
   tipoContato: string;
 }

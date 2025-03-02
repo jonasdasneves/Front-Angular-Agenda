@@ -1,7 +1,7 @@
 import { IContato } from "./contato";
 
 export interface IPessoa {
-  id: string;
+  id?: number;
   nome: string;
   cep: string;
   endereco: string;

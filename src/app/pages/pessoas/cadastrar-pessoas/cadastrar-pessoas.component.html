@@ -5,7 +5,7 @@
   </div>
   <div class="col-3">
     <label for="cep" class="form-label">CEP</label>
-    <input type="text" class="form-control" id="cep" placeholder="00000-123" formControlName="cep">
+    <input type="text" class="form-control" id="cep" placeholder="00000-123" formControlName="cep" pattern="/^\d{5}-\d{3}$/" (blur)="buscarEndereco()">
   </div>
   <div class="col-8">
     <label for="rua" class="form-label">Rua</label>

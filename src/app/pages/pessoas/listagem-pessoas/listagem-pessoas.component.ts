@@ -1,5 +1,8 @@
+import { Router } from '@angular/router';
+import { CadastrarPessoasComponent } from './../cadastrar-pessoas/cadastrar-pessoas.component';
+import { Location } from '@angular/common';
 import { PessoasService } from './../../../services/pessoas.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IPessoa } from 'src/app/interfaces/pessoa';
 
 @Component({
@@ -11,7 +14,7 @@ export class ListagemPessoasComponent implements OnInit {
 
   pessoas: IPessoa[] = [];
 
-  constructor(private pessoasService: PessoasService) { }
+  constructor(private pessoasService: PessoasService, private location: Location, private router: Router) { }
 
   ngOnInit(){
     this.pessoasService.buscarTodasPessoas().subscribe({
@@ -19,10 +22,25 @@ export class ListagemPessoasComponent implements OnInit {
         this.pessoas = response
       }
     })
+    this.pessoasService.setPessoa(null);
+  }
+
+  apagarPessoa(id: any){
+      return this.pessoasService.apagarPessoaPorID(id).subscribe(response => {
+        console.log(response);
+        this.location.go(this.location.path())
+        window.location.reload();
+      });
+  }
+
+  editarPessoa(pessoa: IPessoa){
+      this.pessoasService.setPessoa(pessoa);
+      this.router.navigate(['/cadastrar-pessoa']);
   }
 
   retornaCelular(pessoa: IPessoa){
-      const celular = pessoa.contatos.find(contato => contato.tipoContato === 'celular');
-      return celular ? celular.contato : '-';
+    return this.pessoasService.retornaCelular(pessoa)
   }
+
+
 }

@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { RegistroComponent } from './components/registro/registro.component';
 import { CadastrarPessoasComponent } from './pages/pessoas/cadastrar-pessoas/cadastrar-pessoas.component';
 import { ListagemPessoasComponent } from './pages/pessoas/listagem-pessoas/listagem-pessoas.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,7 +13,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     HeaderComponent,
-    RegistroComponent,
     CadastrarPessoasComponent,
     ListagemPessoasComponent
   ],
@@ -23,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
