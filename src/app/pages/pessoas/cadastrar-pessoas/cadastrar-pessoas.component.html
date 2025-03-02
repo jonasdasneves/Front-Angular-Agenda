@@ -34,9 +34,9 @@
     <input type="text" class="form-control" id="celular" formControlName="celular">
   </div>
   <div class="col-1">
-    <button type="submit" class="btn btn-primary btn-lg">Finalizar</button>
+    <button type="submit" class="btn btn-primary btn-lg" [disabled]="formGroupPessoas.invalid">Salvar</button>
   </div>
   <div class="col-1">
-    <button class="btn btn-secondary btn-lg" routerLink='/pessoas'>Cancelar</button>
+    <button type="button" class="btn btn-secondary btn-lg" routerLink=''>Cancelar</button>
   </div>
 </form>

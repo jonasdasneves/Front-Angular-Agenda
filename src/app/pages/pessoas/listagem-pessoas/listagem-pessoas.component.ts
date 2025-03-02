@@ -1,9 +1,9 @@
 import { Router } from '@angular/router';
-import { CadastrarPessoasComponent } from './../cadastrar-pessoas/cadastrar-pessoas.component';
 import { Location } from '@angular/common';
 import { PessoasService } from './../../../services/pessoas.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IPessoa } from 'src/app/interfaces/pessoa';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listagem-pessoas',
@@ -12,9 +12,13 @@ import { IPessoa } from 'src/app/interfaces/pessoa';
 })
 export class ListagemPessoasComponent implements OnInit {
 
-  pessoas: IPessoa[] = [];
+  @Input() pessoas: IPessoa[] = [];
 
-  constructor(private pessoasService: PessoasService, private location: Location, private router: Router) { }
+  constructor(
+    private readonly pessoasService: PessoasService,
+    private readonly location: Location,
+    private readonly router: Router
+  ) { }
 
   ngOnInit(){
     this.pessoasService.buscarTodasPessoas().subscribe({
@@ -25,12 +29,29 @@ export class ListagemPessoasComponent implements OnInit {
     this.pessoasService.setPessoa(null);
   }
 
-  apagarPessoa(id: any){
-      return this.pessoasService.apagarPessoaPorID(id).subscribe(response => {
-        console.log(response);
-        this.location.go(this.location.path())
-        window.location.reload();
-      });
+  apagarPessoa(id: number){
+    Swal.fire({
+      title: "Você tem certeza de quer apagar o registro?",
+      showDenyButton: true,
+      confirmButtonText: "Sim",
+      denyButtonText: `Cancelar`
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+        return this.pessoasService.apagarPessoaPorID(id).subscribe(response => {
+          Swal.fire("Registro deletado com sucesso!", "", "success");
+          console.log(response);
+
+          this.pessoas = this.pessoas.filter(pessoa => pessoa.id !== id);
+
+
+
+        });
+      }
+      else{
+          return null;
+      }
+    });
   }
 
   editarPessoa(pessoa: IPessoa){

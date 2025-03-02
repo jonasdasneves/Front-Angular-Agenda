@@ -19,10 +19,9 @@
       <td> {{ pessoa.cep }}</td>
       <td> {{ pessoa.cidade }} </td>
       <td> {{ pessoa.uf }} </td>
-      <td> {{ pessoa.id }} </td>
-      <td></td>
+      <td> {{ retornaCelular(pessoa) }} </td>
       <td><button id="edit" type="button" class="btn btn-primary btn-lg" routerLink="/cadastrar-pessoa" (click)="editarPessoa(pessoa)">Editar</button></td>
-      <td><button id="delete" type="button" class="btn btn-danger btn-lg" (click)="apagarPessoa(pessoa.id)">Deletar</button></td>
+      <td><button id="delete" type="button" class="btn btn-danger btn-lg" *ngIf="pessoa.id" [disabled]="!pessoa.id" (click)="apagarPessoa(pessoa.id)">Deletar</button></td>
     </tr>
   </tbody>
 </table>

@@ -7,6 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IContato } from 'src/app/interfaces/contato';
 import { IPessoa } from 'src/app/interfaces/pessoa';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cadastrar-pessoas',
@@ -17,12 +18,12 @@ export class CadastrarPessoasComponent implements OnInit {
   @ViewChild(ListagemPessoasComponent) listagemPessoasComponent!: ListagemPessoasComponent
   formGroupPessoas: FormGroup = new FormGroup({
     nome: new FormControl('',[Validators.required]),
-    cep: new FormControl(''),
-    rua: new FormControl(''),
-    numero: new FormControl(''),
-    bairro: new FormControl(''),
-    cidade: new FormControl(''),
-    uf: new FormControl(''),
+    cep: new FormControl('',[Validators.required]),
+    rua: new FormControl('',[Validators.required]),
+    numero: new FormControl('',[Validators.required]),
+    bairro: new FormControl('',[Validators.required]),
+    cidade: new FormControl('',[Validators.required]),
+    uf: new FormControl('',[Validators.required]),
     celular: new FormControl('')
   })
 
@@ -102,11 +103,15 @@ export class CadastrarPessoasComponent implements OnInit {
       if(pessoa.id){
         this.pessoasService.editarPessoa(pessoa).subscribe(response => {
           console.log(response);
+          Swal.fire('Sucesso', 'Pessoa editada com sucesso!', 'success');
+          this.router.navigate([""])
         })
       }
       else{
         this.pessoasService.cadastrarPessoa(pessoa).subscribe(response => {
           console.log(response);
+          Swal.fire('Sucesso', 'Pessoa cadastrada com sucesso!', 'success');
+          this.router.navigate([""])
         })
       }
 

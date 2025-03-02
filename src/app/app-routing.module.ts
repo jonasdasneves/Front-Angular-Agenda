@@ -7,7 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 const routes: Routes = [
 
   {
-    path: 'pessoas', component: ListagemPessoasComponent
+    path: '', component: ListagemPessoasComponent
   },
   {
     path: 'cadastrar-pessoa', component: CadastrarPessoasComponent
