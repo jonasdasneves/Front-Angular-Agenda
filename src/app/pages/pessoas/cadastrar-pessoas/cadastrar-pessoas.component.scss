@@ -1,0 +1,10 @@
+//Estilização simples de mensagem de erro no formulário
+.erro {
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
+}
+//Se um campo estiver tocado e inválido, a mensagem de erro aparece
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

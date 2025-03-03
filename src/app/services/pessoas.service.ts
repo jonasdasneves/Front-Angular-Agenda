@@ -8,17 +8,21 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PessoasService {
+
+  //
   private pessoaSelecionada: IPessoa | null = null;
 
+  //Url da api CRUD do ambiente
   url = environment.url
 
+  //Chama a classe HttpClient
   constructor(private http: HttpClient) {}
 
-  setPessoa(pessoa: IPessoa | null) {
+  setPessoaSelecionada(pessoa: IPessoa | null) {
     this.pessoaSelecionada = pessoa;
   }
 
-  getPessoa() {
+  getPessoaSelecionada() {
     return this.pessoaSelecionada;
   }
 

@@ -4,6 +4,7 @@ import { ListagemPessoasComponent } from './pages/pessoas/listagem-pessoas/lista
 import { CadastrarPessoasComponent } from './pages/pessoas/cadastrar-pessoas/cadastrar-pessoas.component';
 import { HeaderComponent } from './components/header/header.component';
 
+//Definição de rotas
 const routes: Routes = [
 
   {

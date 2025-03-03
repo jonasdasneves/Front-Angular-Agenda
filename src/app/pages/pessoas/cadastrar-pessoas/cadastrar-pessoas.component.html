@@ -1,41 +1,65 @@
+<!--Criação de formulário com validação de campos e exibição de mensagem de erro se necessário-->
 <form [formGroup]="formGroupPessoas" (submit)="cadastrarPessoa()" class="row g-3">
   <div class="col-12">
     <label for="nome" class="form-label">Nome</label>
     <input type="text" class="form-control" id="nome" formControlName="nome">
+    <div class="erro" *ngIf="formGroupPessoas.controls['nome'].invalid && formGroupPessoas.controls['nome'].touched">
+      Campo Obrigatório!
+    </div>
   </div>
   <div class="col-3">
     <label for="cep" class="form-label">CEP</label>
-    <input type="text" class="form-control" id="cep" placeholder="00000-123" formControlName="cep" pattern="/^\d{5}-\d{3}$/" (blur)="buscarEndereco()">
+    <input type="text" class="form-control" id="cep" placeholder="00000-123" formControlName="cep" (blur)="buscarEndereco()">
+    <div class="erro" *ngIf="formGroupPessoas.controls['cep'].invalid && formGroupPessoas.controls['cep'].touched">
+      CEP inválido ou obrigatório! Formato correto: 12345-678
+    </div>
   </div>
   <div class="col-8">
     <label for="rua" class="form-label">Rua</label>
     <input type="text" class="form-control" id="rua" placeholder="Rua palmeiras" formControlName="rua">
+    <div class="erro" *ngIf="formGroupPessoas.controls['rua'].invalid && formGroupPessoas.controls['rua'].touched">
+      Campo Obrigatório!
+    </div>
   </div>
   <div class="col-1">
     <label for="numero" class="form-label">Número</label>
     <input type="number" class="form-control" id="numero" formControlName="numero">
+    <div class="erro" *ngIf="formGroupPessoas.controls['numero'].invalid && formGroupPessoas.controls['numero'].touched">
+      Campo Obrigatório!
+    </div>
   </div>
   <div class="col-3">
     <label for="bairro" class="form-label">Bairro</label>
     <input type="text" class="form-control" id="bairro" formControlName="bairro">
+    <div class="erro" *ngIf="formGroupPessoas.controls['bairro'].invalid && formGroupPessoas.controls['bairro'].touched">
+      Campo Obrigatório!
+    </div>
   </div>
   <div class="col-md-4">
     <label for="cidade" class="form-label">Cidade</label>
     <input type="text" class="form-control" id="cidade" formControlName="cidade">
+    <div class="erro" *ngIf="formGroupPessoas.controls['cidade'].invalid && formGroupPessoas.controls['cidade'].touched">
+      Campo Obrigatório!
+    </div>
   </div>
   <div class="col-md-2">
     <label for="UF" class="form-label" >Estado</label>
     <select id="uf" class="form-select" formControlName="uf">
       <option selected>Escolha...</option>
     </select>
+    <div class="erro" *ngIf="formGroupPessoas.controls['uf'].invalid && formGroupPessoas.controls['uf'].touched">
+      Campo Obrigatório!
+    </div>
   </div>
   <div class="col-md-3">
     <label for="celular" class="form-label">Celular</label>
     <input type="text" class="form-control" id="celular" formControlName="celular">
   </div>
+  <!--botão para enviar forumário-->
   <div class="col-1">
-    <button type="submit" class="btn btn-primary btn-lg" [disabled]="formGroupPessoas.invalid">Salvar</button>
+    <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
   </div>
+  <!--botão para cancelar e voltar à tela de exibição de pessoas-->
   <div class="col-1">
     <button type="button" class="btn btn-secondary btn-lg" routerLink=''>Cancelar</button>
   </div>

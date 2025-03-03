@@ -1,3 +1,4 @@
+//Criação de interface IViaCep
 export interface IViaCep {
   "cep": string,
   "logradouro": string,

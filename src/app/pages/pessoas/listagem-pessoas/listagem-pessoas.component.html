@@ -1,3 +1,4 @@
+<!--Tabela para exibição de todos os registros de pessoas-->
 <table class="table">
   <thead>
     <tr>
@@ -11,6 +12,9 @@
       <th colspan="2"></th>
     </tr>
   </thead>
+
+  <!--Faz um loop para coletar as informações de todos os registros-->
+  <!--To do - fazer paginação para evitar mostrar muitos registros de uma vez-->
   <tbody *ngFor="let pessoa of pessoas">
     <tr>
       <th>{{ pessoa.id }}</th>
@@ -19,8 +23,11 @@
       <td> {{ pessoa.cep }}</td>
       <td> {{ pessoa.cidade }} </td>
       <td> {{ pessoa.uf }} </td>
+      <!-- Chama o método retorna celular para consultar celular de uma pessoa -->
       <td> {{ retornaCelular(pessoa) }} </td>
-      <td><button id="edit" type="button" class="btn btn-primary btn-lg" routerLink="/cadastrar-pessoa" (click)="editarPessoa(pessoa)">Editar</button></td>
+      <!--Botão editar chama a função editar pessoa-->
+      <td><button id="edit" type="button" class="btn btn-primary btn-lg" (click)="editarPessoa(pessoa)">Editar</button></td>
+      <!--Botãoo deletar chama a função deletar pessoa - o disabled existe para evitar que o ts dê erro, por esperar um "valor nulo", pois o ID de IPessoa é opcional-->
       <td><button id="delete" type="button" class="btn btn-danger btn-lg" *ngIf="pessoa.id" [disabled]="!pessoa.id" (click)="apagarPessoa(pessoa.id)">Deletar</button></td>
     </tr>
   </tbody>
