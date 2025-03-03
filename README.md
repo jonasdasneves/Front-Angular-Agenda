@@ -18,6 +18,9 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [ ] Tarefa 4 - Exibição personalizada de erros
 - [ ] Tarefa 5 - Criação de footer e tela incial
 
+Link de video demonstrativo do projeto: 
+https://www.linkedin.com/posts/jonas-campos-8bb8211b3_ol%C3%A1-rede-gostaria-de-compartilhar-o-crud-activity-7302156356432633856-3QPj?utm_source=share&utm_medium=member_desktop&rcm=ACoAADHG_c8BdLX-iMPpJ87sNgWXMgEYVtAPaWk
+
 Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 12.2.13. 
 
 A versão do node-Red utilizada foi o 16.20.2
